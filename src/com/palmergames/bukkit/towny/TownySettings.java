@@ -22,7 +22,6 @@ import com.palmergames.bukkit.towny.object.TownyPermission.PermLevel;
 import com.palmergames.bukkit.towny.object.Translation;
 import com.palmergames.bukkit.towny.permissions.PermissionNodes;
 import com.palmergames.bukkit.towny.utils.EntityTypeUtil;
-import com.palmergames.bukkit.util.Colors;
 import com.palmergames.bukkit.util.ItemLists;
 import com.palmergames.util.FileMgmt;
 import com.palmergames.util.StringMgmt;
@@ -424,25 +423,6 @@ public class TownySettings {
 			return "";
 		}
 		return data;
-	}
-
-	/**
-	 * Gets the lang string from the key.
-	 * 
-	 * @param root The key for the language string.
-	 * @return The translated lang string.
-	 * 
-	 * @deprecated As of 0.96.2.5+ use {@link Translation#of(String)} instead.
-	 */
-	@Deprecated
-	public static String getLangString(String root) {
-		String data = Translation.of(root);
-
-		if (data == null) {
-			sendError(root.toLowerCase() + " from " + config.getString("language"));
-			return "";
-		}
-		return StringMgmt.translateHexColors(Colors.translateColorCodes(data));
 	}
 
 	public static List<Integer> getIntArr(ConfigNodes node) {
@@ -1368,17 +1348,6 @@ public class TownySettings {
 			return getMaxBonusBlocks(town);
 		else
 			return getInt(ConfigNodes.TOWN_MAX_PURCHASED_BLOCKS);
-	}
-	
-	/**
-	 * @deprecated as of 0.96.6.0, use {@link #getMaxPurchasedBlocks(Town town)}
-	 * @param town Town to get the maximum number of blocks they can buy.
-	 * @return {@link #getMaxPurchasedBlocks(Town)}
-	 */
-	@Deprecated
-	public static int getMaxPurchedBlocks(Town town) {
-		
-		return getMaxPurchasedBlocks(town);
 	}
 	
 	public static int getMaxPurchasedBlocksNode() {

@@ -854,19 +854,4 @@ public class Resident extends TownyObject implements InviteReceiver, EconomyHand
 		TownyMessaging.sendMsg(this, Translatable.of("msg_you_have_lost_your_invulnerability"));
 	}
 
-
-	/**
-	 * @deprecated As of 0.96.0.0+ please use {@link EconomyAccount#getWorld()} instead.
-	 *
-	 * @return The world this resides in.
-	 */
-	@Deprecated
-	public World getBukkitWorld() {
-		Player player = getPlayer();
-		if (player != null) {
-			return player.getWorld();
-		} else {
-			return BukkitTools.getWorlds().get(0);
-		}
-	}
 }
